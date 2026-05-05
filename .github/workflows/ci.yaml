@@ -1,23 +1,22 @@
 name: Deploy HTML to GitHub Pages
 
-# Trigger the workflow on push to main branch
 on:
   push:
     branches:
-      - main  # change to your default branch if it's different
+      - main  # replace with your branch if different
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1: Checkout your repository
+      # Step 1: Checkout your repo
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # Step 2: Set up GitHub Pages deployment
+      # Step 2: Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v6
+        uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./ index.html # Path to your HTML files (root directory)
+          publish_dir: ./index.html
