@@ -3,18 +3,20 @@ name: Deploy HTML to GitHub Pages
 on:
   push:
     branches:
-      - main  # replace with your branch if different
+      - main
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
 
     steps:
-      # Step 1: Checkout your repo
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # Step 2: Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
